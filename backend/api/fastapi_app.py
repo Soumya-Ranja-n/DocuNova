@@ -130,12 +130,25 @@ async def lifespan(app):
     yield
     log_event("project.stopped", service="docunova-api", status="stopped")
 
-app = FastAPI(
-    title="DocuNova API",
-    description="Evidence-first document intelligence service.",
-    version="0.1.0",
-    lifespan=lifespan,
+app = FastAPI(title="DocuNova")   # your existing line
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://docu-nova-4ro9-6cjdno5or-soumya-ranjan-routs-projects-f780d4d2.vercel.app",
+        "http://localhost:3000",  # keeps local dev working
+    ],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
+
+# your routes / routers go below
+# app.include_router(...)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[config.frontend_origin],
