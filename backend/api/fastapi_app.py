@@ -130,7 +130,7 @@ async def lifespan(app):
     yield
     log_event("project.stopped", service="docunova-api", status="stopped")
 
-app = FastAPI(title="DocuNova")   # your existing line
+app = FastAPI()   # your existing line
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
