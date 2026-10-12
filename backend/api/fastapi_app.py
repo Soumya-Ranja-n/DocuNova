@@ -134,15 +134,6 @@ app = FastAPI(title="DocuNova", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://docu-nova-4ro9-6cjdno5or-soumya-ranjan-routs-projects-f780d4d2.vercel.app",
-        "http://localhost:3000",
-    ],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-app.add_middleware(
-    CORSMiddleware,
     allow_origins=[config.frontend_origin],
     allow_credentials=False,
     allow_methods=["GET", "POST", "DELETE"],
