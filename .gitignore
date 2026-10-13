@@ -34,3 +34,5 @@ data/indexes/*
 !data/indexes/.gitkeep
 *.db
 
+.vercel
+.env*
